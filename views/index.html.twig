@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Coins</title>
+</head>
+<body>
+  <form action="/check" method="post">
+    <label for="amount">Enter the amount</label>
+    <input id="amount" name="amount">
+    <button type="submit">Submit</button>
+  </form>
+
+
+  <li>Quarters: {{ q }}</li>
+  <li>Dimes: {{ d }}</li>
+  <li>Nickels: {{ n }}</li>
+  <li>Pennies: {{ p }}</li>
+
+
+</body>
+</html>

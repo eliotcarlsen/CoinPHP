@@ -1,0 +1,69 @@
+class Coins {
+
+
+    function coinCombo ($val) {
+      $cents = $val*100;
+
+      // if($cents%25 == 0){
+      //   $quarter_number . " quarters" = $cents/25;
+      //   echo $quarter_number . " quarters";
+      // }
+      $quarter_number = (int) ($cents/25);
+      $remainder = $cents%25;
+
+      if ($remainder == 0){
+        $quarter_number = $quarter_number;
+        $dime_number = 0;
+        $nickle_number = 0;
+        $penny_number = 0;
+      }
+
+      elseif ($remainder < 25) {
+        if($remainder>10){
+          $dime_number = (int)($remainder/10);
+          $remainder_one = $remainder%10;
+          if ($remainder_one == 0){
+            $nickle_number = 0;
+            $penny_number = 0;
+          } elseif ($remainder_one%5>5){
+            $nickle_number = $remainder_one/5;
+            $penny_number = 0;
+          } elseif ($remainder_one%5<5){
+            $nickle_number = 0;
+            $penny_number = $remainder_one%5;
+          }
+        } elseif ($remainder<10) {
+          $dime_number = 0;
+          $remainder_one = $remainder%5;
+          if ($remainder_one == 0){
+            $nickle_number = $remainder_two/5;
+            $penny_number = 0;
+          } elseif ($remainder_one<5) {
+            $nickle_number = 0;
+            $penny_number = $remainder_one;
+          }
+        }
+      }
+
+      elseif ($remainder == 25) {
+        $quarter_number = 0;
+        $dime_number = (int)($remainder/10);
+        $remainder_one = $remainder%10;
+        if ($remainder_one == 0){
+          $nickle_number = 0;
+          $penny_number = 0;
+        } elseif ($remainder_one%5>5){
+          $nickle_number = $remainder_one/5;
+          $penny_number = 0;
+        } elseif ($remainder_one%5<5){
+          $nickle_number = 0;
+          $penny_number = $remainder_one%5;
+        }
+      }
+
+
+      return $quarter_number . $dime_number . $nickle_number. $penny_number;
+
+    }
+
+  }

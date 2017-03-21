@@ -1,0 +1,159 @@
+<?php
+    class Coins
+    {
+        function coinNumber($user_input)
+        {
+            $quarter_number = 0;
+            $dime_number = 0;
+            $nickel_number = 0;
+            $penny_number = 0;
+            if ($user_input < .05){
+              $penny_number = $user_input * 100;
+              return $penny_number;
+            } elseif (($user_input == .05) || ($user_input < .10)){
+              $nickel_number = $nickel_number + 1;
+              $user_input = $user_input - .05;
+              $penny_number = $user_input * 100;
+              return $nickel_number . $penny_number;
+            } elseif (($user_input == .10) || ($user_input < .20)){
+              $dime_number = $dime_number + 1;
+              $user_input = $user_input - .10;
+              $penny_number = $user_input * 100;
+              return $dime_number . $nickel_number . $penny_number;
+            } elseif ($user_input == .25){
+              $quarter_number = $quarter_number + 1;
+              return $quarter_number;
+            }
+        }
+    }
+
+
+
+
+    {
+        $test_coin = new Coins;
+        $input = .01;
+
+        $result=$test_coin->coinNumber($input);
+
+        $this->assertEquals(1, $result);
+    }
+    function testnickel()
+    {
+        $test_coin = new Coins;
+        $input = .05;
+
+        $result=$test_coin->coinNumber($input);
+
+        $this->assertEquals(10, $result);
+    }
+    function testdime()
+    {
+        $test_coin = new Coins;
+        $input = .10;
+
+        $result=$test_coin->coinNumber($input);
+
+        $this->assertEquals(100, $result);
+    }
+    function testquarter()
+    {
+        $test_coin = new Coins;
+        $input = .25;
+
+        $result=$test_coin->coinNumber($input);
+
+        $this->assertEquals(1, $result);
+    }
+    function testpennies3()
+    {
+        $test_coin = new Coins;
+        $input = .03;
+
+        $result=$test_coin->coinNumber($input);
+
+        $this->assertEquals(3, $result);
+    }
+    function testpennies4()
+    {
+        $test_coin = new Coins;
+        $input = .04;
+
+        $result=$test_coin->coinNumber($input);
+
+        $this->assertEquals(4, $result);
+    }
+    function test6cents()
+    {
+        $test_coin = new Coins;
+        $input = .06;
+
+        $result=$test_coin->coinNumber($input);
+
+        $this->assertEquals(11, $result);
+    }
+    function test7cents()
+    {
+        $test_coin = new Coins;
+        $input = .07;
+
+        $result=$test_coin->coinNumber($input);
+
+        $this->assertEquals(12, $result);
+    }
+    function test8cents()
+    {
+        $test_coin = new Coins;
+        $input = .08;
+
+        $result=$test_coin->coinNumber($input);
+
+        $this->assertEquals(13, $result);
+    }
+    function test9cents()
+    {
+        $test_coin = new Coins;
+        $input = .09;
+
+        $result=$test_coin->coinNumber($input);
+
+        $this->assertEquals(14, $result);
+    }
+    function test11cents()
+    {
+        $test_coin = new Coins;
+        $input = .11;
+
+        $result=$test_coin->coinNumber($input);
+
+        $this->assertEquals(101, $result);
+    }
+    function test12cents()
+    {
+        $test_coin = new Coins;
+        $input = .12;
+
+        $result=$test_coin->coinNumber($input);
+
+        $this->assertEquals(102, $result);
+    }
+    function test14cents()
+    {
+        $test_coin = new Coins;
+        $input = .14;
+
+        $result=$test_coin->coinNumber($input);
+
+        $this->assertEquals(104, $result);
+    }
+    function test15cents()
+    {
+        $test_coin = new Coins;
+        $input = .11;
+
+        $result=$test_coin->coinNumber($input);
+
+        $this->assertEquals(110, $result);
+    }
+    }
+?>
